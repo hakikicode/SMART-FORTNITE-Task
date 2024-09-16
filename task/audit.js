@@ -1,30 +1,32 @@
-const { namespaceWrapper } = require('@_koii/namespace-wrapper');
+const { verifyTaskSubmission } = require('./namespaceWrapper');
 
-class Audit {
-  /**
-   * Validates the submission value by your logic
-   *
-   * @param {string} submission_value - The submission value to be validated
-   * @param {number} round - The current round number
-   * @returns {Promise<boolean>} The validation result, return true if the submission is correct, false otherwise
-   */
-  async validateNode(submission_value, round) {
-    // Write Your Validation Logic Here
-    console.log(`VALIDATE NODE FOR ROUND ${round}`);
-    return submission_value === 'Hello, World!';
-  }
-  /**
-   * Vote on the other nodes Submissions
-   *
-   * @param {number} roundNumber - The current round number
-   * @returns {void}
-   */
-  async auditTask(roundNumber) {
-    await namespaceWrapper.validateAndVoteOnNodes(
-      this.validateNode,
-      roundNumber,
-    );
+async function audit(submissionData) {
+  try {
+    // Parse the submission data
+    const playerScores = JSON.parse(submissionData);
+
+    // Example validation: Check if player scores and token rewards are correctly calculated
+    for (const player in playerScores) {
+      const data = playerScores[player];
+      const expectedPoints = data.coinsTapped * 10;
+      const expectedTokens = Math.floor(expectedPoints / 1000);
+
+      if (data.points !== expectedPoints) {
+        throw new Error(`Points for player ${player} do not match: expected ${expectedPoints}, got ${data.points}`);
+      }
+
+      if (data.smartTokensEarned !== expectedTokens) {
+        throw new Error(`SMART Tokens for player ${player} do not match: expected ${expectedTokens}, got ${data.smartTokensEarned}`);
+      }
+    }
+
+    // If all validations pass
+    console.log("Audit passed successfully.");
+    return true;
+  } catch (error) {
+    console.error("Audit failed:", error);
+    return false;
   }
 }
-const audit = new Audit();
+
 module.exports = { audit };
