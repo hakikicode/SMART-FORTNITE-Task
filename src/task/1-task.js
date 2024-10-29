@@ -6,7 +6,7 @@ export async function task(roundNumber) {
   try {
     console.log(`EXECUTE TASK FOR ROUND ${roundNumber}`);
     // you can optionally return this value to be used in debugging
-    await namespaceWrapper.storeSet("value", "Hello, World!");
+    await namespaceWrapper.storeSet("value", "GameFi, World!");
   } catch (error) {
     console.error("EXECUTE TASK ERROR:", error);
   }
