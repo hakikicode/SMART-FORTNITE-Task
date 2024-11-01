@@ -1,68 +1,77 @@
-# Koii Task Template
+# SMART Open Network & SMART Task
 
-## Development Guide
+**SMART Open Network** is a decentralized platform that offers tasks, gaming experiences, and opportunities for users to earn rewards in **SMART tokens**. With the **SMART Task** system deployed on the **Koii Network**, users can participate in various blockchain-based tasks to earn rewards while contributing to the growth of the network.
 
-First time writing a task? Start with the [Development Guide](https://github.com/koii-network/ezsandbox).
+## Overview
 
-## Task Flow
+- **SMART Open Network**: A decentralized ecosystem where participants can complete tasks, earn tokens, and play blockchain-based games like the **SmartClicking Game**.
+- **SMART Task**: A task system that allows users to complete specific tasks on the **Koii Network**, earn **SMART tokens**, and engage in blockchain validation.
 
-Tasks operate within a periodic structure known as 'rounds'. Each round consists of the following steps:
+## Key Features
 
-1. **Perform the Task:** Execute the necessary actions for the round.
-2. **Audit Work:** Review the work completed by other nodes.
-3. **Rewards and Penalties:** Distribute rewards and apply penalties as necessary.
+- **SMART Tokens**: Utility tokens that users earn for completing tasks, playing games, or contributing to the network.
+- **SmartClicking Game**: A blockchain-based game where users can earn tokens by completing clicks and actions.
+- **SMART Task on Koii Network**: A decentralized task system where participants complete tasks, validate data, and contribute to the blockchain while earning **SMART tokens**.
 
-For more detailed information about the task flow, refer to [the runtime flow documentation](https://docs.koii.network/concepts/what-are-tasks/what-are-tasks/gradual-consensus).
+## Benefits of Participating
 
-Looking to bring better structure to your task? Explore our [Task Organizer](https://www.figma.com/community/file/1220194939977550205/Task-Outline) for better organization.
+- Earn **SMART tokens** for completing blockchain tasks.
+- Early participants receive bonus rewards for engaging in the **SMART Task**.
+- Use **SMART tokens** for staking, governance, or in-game features.
+- Join a growing decentralized ecosystem and help validate blockchain tasks.
 
-## Tips
+## Getting Started with SMART Task
 
-- Always ensure your secret files, such as `.env` files, are secure! Implement a robust `.gitignore` strategy.
-- Continue innovating with Koii!
+### 1. Requirements
 
-Should you encounter any issues, don't hesitate to reach out by opening a ticket on [Discord](https://discord.gg/koii-network).
+- A **Koii Node** to participate in tasks.
+- A supported **crypto wallet** to store and manage **SMART tokens**.
 
-## Environment Requirements
+### 2. How to Participate
 
-- [Node >=16.0.0](https://nodejs.org)
-- [Docker Compose](https://docs.docker.com/get-started/08_using_compose/)
+#### Set up a Koii Node
+Follow [Koii Network](https://koii.network/) instructions to set up your own Koii Node. This is essential to participate in **SMART Task** validation.
 
-## Tool Requirements
+#### Start Earning
+Once your node is running, you can start completing tasks on the **SMART Task**. The tasks involve validating data or actions submitted by other users, with opportunities to earn **SMART tokens**.
 
-- [Koii CLI Suite](https://docs.koii.network/develop/command-line-tool/koii-cli/install-cli)
-- [Create Task CLI](https://docs.koii.network/develop/command-line-tool/create-task-cli/install)
+### 3. Validation Process
 
-## Available Scripts
+As a participant, your role is to:
 
-```sh
-npm test
-```
+- Complete tasks (such as validating game data or blockchain actions).
+- Submit proofs of task completion on-chain.
+- Earn **SMART tokens** based on your contributions and accuracy.
 
-Simulate rounds using unitTest.js.
+## How SMART Task Works
 
-```sh
-npm jest-test
-```
+### Task Submission:
+Tasks are submitted by the system or users and are posted on the **Koii Network** for validation. Participants can join the validation round to help verify the correctness of tasks.
 
-Runs tests using Just.
+### Task Validation:
+Validators audit the submitted data against the stored game data or blockchain activity to ensure accuracy. If the data is valid, it is approved, and participants are rewarded.
 
-```sh
-npm run webpack
-```
+### Reward Distribution:
+After completing tasks, participants earn **SMART tokens**. Early participants in the **SMART Task** will receive bonus tokens for their involvement.
 
-Builds the project and generates the main script: `dist/main.js`.
+## SMART Token Utility
 
-```sh
-npm run prod-debug
-```
+- **Staking**: Lock your **SMART tokens** to earn more rewards or gain voting power in the governance of the network.
+- **Gaming**: Use your **SMART tokens** in the **SmartClicking Game** to unlock in-game features, boost your earnings, and more.
+- **Governance**: Participate in voting on the future direction of the **SMART Open Network**.
 
-Runs the live debugger (must have the task running in the desktop node).
+## Roadmap
 
-## Runtime Options
+- **Phase 1**: Launch of **SMART Task** on **Koii Network** for task validation and token rewards.
+- **Phase 2**: Expansion of the **SmartClicking Game** with new features and additional reward opportunities.
+- **Phase 3**: Integration with DeFi platforms to allow staking, lending, and borrowing of **SMART tokens**.
+- **Phase 4**: Partnerships with complementary blockchain platforms to increase exposure and utility of **SMART tokens**.
 
-There are two ways to run your task during development:
+---
 
-1. With `GLOBAL_TIMERS="true"` (refer to `.env.local.example`) - When this option is enabled, IPC calls are made by calculating the average time slots of all tasks running on your node.
-
-2. With `GLOBAL_TIMERS="false"` - This option allows for manual calls to K2 and disables the automatic triggers for round management on K2. Transactions are only accepted during the correct time period. Instructions for manual calls can be found in `index.js`.
+Feel free to reach out to our team for any questions or assistance in getting started with **SMART Open Network** and **SMART Task**!
+nativeopen.x@ud.me
+nativeopen.x@gmail.com
+twitter(X): @smart_openet
+instagram: smart_openet
+telegram: @depinsdirect
