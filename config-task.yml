@@ -21,14 +21,14 @@ description: "check and validate games data."
 
 ## Repository URL ##
 # Must be public for whitelisted tasks.
-repositoryUrl: "https://github.com/koii-network/task-template"
+repositoryUrl: "https://github.com/hakikicode/SMART-Task"
 
 ## Image URL ##
 # 230x86 pixels.
 imageUrl: "https://github.com/hakikicode/SmartClick/blob/main/public/son.png?raw=true"
 
 ## Info URL ##
-infoUrl: "https://www.nativeopen.x"
+infoUrl: "https://ipfs.io/ipfs/QmcJwn2wL5gL2MFugqZW7SUyBNtrmh19W8a5cpxnPG2rRt/"
 
 ####################################### TASK CONFIGURATION ######################################
 
@@ -71,7 +71,7 @@ token_type: "HK8STMDTos4QFocyEADxwdXBrN13DCB9AcwLXsmvBthh"
 ## Total Bounty Amount ##
 # The total bounty amount that will be available for distribution over all rounds.
 # Does nothing when updating a task.
-total_bounty_amount: 10
+total_bounty_amount: 1000000
 
 ## Bounty Amount per Round ##
 # The maximum amount that can be distributed per round.
@@ -100,12 +100,12 @@ requirementsTags:
   - type: STORAGE
     value: "5 GB"
   - type: TASK_VARIABLE
-    value: "TG_VARIABLE"
-    description: "add your telegram username."
+    value: "TG_USERNAME"
+    description: "add your telegram username with or without @."
 
 ## Tags ##
 # See https://www.koii.network/docs/develop/command-line-tool/create-task-cli/create-task#tags for available tag options.
-tags: ["Witness"]
+tags: ["Data Gathering""Web Crawling"]
 
 # Environment ##
 # TEST or PRODUCTION
