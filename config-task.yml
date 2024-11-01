@@ -1,7 +1,7 @@
 # Name and metadata of your task
 task_name: 'SMART task'
 author: 'Hakiki'
-description: 'description'
+description: 'Earn tokens by playing Smartclick Game'
 repositoryUrl: 'https://github.com/hakikicode/SMART-Task' # Replaced with my own repo URL
 imageUrl: 'imageUrl'
 infoUrl: 'infoUrl'
@@ -58,7 +58,7 @@ requirementsTags:
 
 # ONLY provide the task_id and migrationDescription if you are updating the task, otherwise leave blank.
 # Task_id: Previous task ID.
-task_id: ''
+task_id: '9U1CMghBMhWrroZGnAuco3phBYx5a3g5VfdK2qvy5SPY'
 
 # Migration description: Provide the description for changes made in the new version of the task.
-migrationDescription: ''
+migrationDescription: 'A task that rewards players for interacting with the Smartclick Game'
