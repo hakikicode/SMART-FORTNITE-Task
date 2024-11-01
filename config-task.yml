@@ -115,7 +115,7 @@ environment: "PRODUCTION"
 #################################### FOR UPDATING TASKS ONLY ####################################
 
 ## Old Task ID ##
-task_id: ""
+task_id: "2HfA9erT8BfWjWdXHjsA6vVUYzEab1M1HWNsqmcEReyc"
 
 ## Migration Description ##
 migrationDescription: "Get rewards for playing Games and running smart task to validate and submit game data"
