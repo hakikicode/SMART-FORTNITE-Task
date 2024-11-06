@@ -88,7 +88,7 @@ allowed_failed_distributions: 3
 # Expected Task Data Size in MBs for the account size.
 # Minimums: 2 for whitelisted tasks, 1 for production, 0.1 for testing.
 # See https://www.koii.network/docs/develop/command-line-tool/create-task-cli/create-task#space for calculation details.
-space: 0.1
+space: 2.0
 
 ## Requirement Tags (Optional) ##
 # To add more global variables and task variables, please refer to the type, value, description format shown below.
@@ -105,7 +105,7 @@ requirementsTags:
 
 ## Tags ##
 # See https://www.koii.network/docs/develop/command-line-tool/create-task-cli/create-task#tags for available tag options.
-tags: ["Data Gathering""Web Crawling"]
+tags: ["Data Gathering", "Web Crawling"]
 
 # Environment ##
 # TEST or PRODUCTION
@@ -118,4 +118,4 @@ environment: "PRODUCTION"
 task_id: "2HfA9erT8BfWjWdXHjsA6vVUYzEab1M1HWNsqmcEReyc"
 
 ## Migration Description ##
-migrationDescription: "Get rewards for playing Games and running smart task to validate and submit game data"
+migrationDescription: "This task rewards users based on validated Telegram game data, including fields like TG_USERNAME and PlayerScore. The validation process ensures that rewards correspond to accurate gameplay data submitted through Koii's decentralized node network."
