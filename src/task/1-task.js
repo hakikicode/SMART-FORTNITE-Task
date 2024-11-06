@@ -1,13 +1,24 @@
 import { namespaceWrapper } from "@_koii/namespace-wrapper";
 
 export async function task(roundNumber) {
-  // Run your task and store the proofs to be submitted for auditing
-  // The submission of the proofs is done in the submission function
   try {
-    console.log(`EXECUTE TASK FOR ROUND ${roundNumber}`);
-    // you can optionally return this value to be used in debugging
-    await namespaceWrapper.storeSet("value", "GameFi, World!");
+    console.log(`Executing task for round ${roundNumber}`);
+
+    // Fetch game data, e.g., player scores
+    const gameData = await fetchGameData();
+
+    // Store data for submission and audit
+    await namespaceWrapper.storeSet(`round_${roundNumber}_gameData`, JSON.stringify(gameData));
+    console.log("Game data stored for submission:", gameData);
   } catch (error) {
-    console.error("EXECUTE TASK ERROR:", error);
+    console.error("Error in task execution:", error);
   }
+}
+
+// Simulated game data function
+async function fetchGameData() {
+  return {
+    TG_Username: "hakikitech",
+    PlayerScore: Math.floor(Math.random() * 1000), // Simulated score
+  };
 }
