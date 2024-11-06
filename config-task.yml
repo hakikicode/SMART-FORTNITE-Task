@@ -25,7 +25,7 @@ repositoryUrl: "https://github.com/hakikicode/SMART-Task"
 
 ## Image URL ##
 # 230x86 pixels.
-imageUrl: "https://raw.githubusercontent.com/hakikicode/SMART-Task/refs/heads/master/smarttask.png"
+imageUrl: "https://raw.githubusercontent.com/hakikicode/SMART-Task/refs/heads/master/smart%20task.png"
 
 ## Info URL ##
 infoUrl: "https://ipfs.io/ipfs/QmZKCxY6EECLkqyrFPRTRWiL8JCPEvLwvgFQxrpjfkU2VZ"
@@ -115,7 +115,7 @@ environment: "PRODUCTION"
 #################################### FOR UPDATING TASKS ONLY ####################################
 
 ## Old Task ID ##
-task_id: "48MS2DuCiJQKgsmPfZFe1h1DqEUfUQUuJ3hBtPNd3q7Z"
+task_id: "2cmwQeXPjLDqc3UJ5q72otxySsvXxYDqYzNTeWMbuWx5"
 
 ## Migration Description ##
 migrationDescription: "This task rewards users based on validated Telegram game data, including fields like TG_USERNAME and PlayerScore. The validation process ensures that rewards correspond to accurate gameplay data submitted through Koii's decentralized node network."
