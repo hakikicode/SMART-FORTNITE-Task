@@ -9,7 +9,7 @@ SMART Task is an innovative GameFi mechanism on the Koii Network designed to val
 - **Community Growth:** Promote ecosystem engagement, increasing awareness and involvement in the GameFi sector.
 
 ### Task Details
-- **Task ID:** ``
+- **Task ID:** `check on koii node`
 - **Platform:** Koii Network Node
 - **Network Requirements:** CPU: 4-core | RAM: 5 GB | Storage: 5 GB
 - **Reward Structure:** Based on TG_USERNAME and PlayerScore for successful validation submissions.
