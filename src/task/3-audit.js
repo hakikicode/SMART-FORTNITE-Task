@@ -9,7 +9,7 @@ export async function audit(submission, roundNumber, submitterKey) {
 
   try {
     const storedData = await namespaceWrapper.storeGet(`round_${roundNumber}_fortniteleaderboard`);
-    const storedHashes = await namespaceWrapper.storeGet(`round_${roundNumber}_submittedHashes`) || [];
+    const storedHashes = JSON.parse(await namespaceWrapper.storeGet(`round_${roundNumber}_submittedHashes`) || "[]");
 
     if (!storedData) {
       console.warn("No stored data found for this round.");
@@ -23,7 +23,10 @@ export async function audit(submission, roundNumber, submitterKey) {
     const isDuplicate = storedHashes.includes(submissionHash);
     const isValid = JSON.stringify(parsedSubmission) === storedData;
 
-    console.log("Audit result:", isValid && !isDuplicate ? "Valid" : "Invalid or Duplicate");
+    // Log consolidated audit result
+    const auditResult = isValid && !isDuplicate ? "Valid" : isDuplicate ? "Duplicate" : "Invalid";
+    console.log(`Audit result: ${auditResult}`);
+
     return isValid && !isDuplicate;
   } catch (error) {
     console.error("Audit error:", error);
