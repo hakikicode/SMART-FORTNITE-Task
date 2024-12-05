@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
+import crypto from "crypto"; // For hashing
 import { namespaceWrapper } from "@_koii/namespace-wrapper";
 
 // Fortnite API Configuration
@@ -21,7 +22,6 @@ const getPlayerStats = async (username) => {
       params: { name: username },
     });
 
-    // Check if data is present
     if (statsResponse.data?.data) {
       return statsResponse.data.data;
     } else {
@@ -29,47 +29,60 @@ const getPlayerStats = async (username) => {
     }
   } catch (error) {
     console.error(`Error fetching stats for ${username}:`, error.response?.data || error.message);
-    return null; // Return null for graceful handling
+    return null;
   }
 };
 
-// Fetch Players Username
+// Fetch Players Usernames Dynamically
 const fetchAccountId = async () => {
   try {
     const response = await axios.get(`${FORTNITE_API_BASE}/stats/br/v2/{accountId}`, {
       headers: { Authorization: `Bearer ${API_KEY}` },
     });
 
-    // Extract usernames from the response
     if (response.data?.data) {
-      return response.data.data.map((player) => player.name);
+      return response.data.data.map((player) => player.name); // Extract usernames
     } else {
       throw new Error("No account data found.");
     }
   } catch (error) {
     console.error("Error fetching accountId data:", error.response?.data || error.message);
-    throw new Error("Unable to fetch accountId or account data.");
+    return [];
   }
 };
 
-// Preprocessing Fortnite Gameplay Data
-const preprocessFortniteStats = (stats) => {
-  return {
-    gameName: "Fortnite",
-    playerName: stats?.account?.name || "unknown",
-    platform: stats?.platform || "unknown",
-    overallStats: {
-      kills: stats?.stats?.all?.overall?.kills || 0,
-      matchesPlayed: stats?.stats?.all?.overall?.matches || 0,
-      wins: stats?.stats?.all?.overall?.wins || 0,
-      winRate: stats?.stats?.all?.overall?.winRate || 0,
-    },
-    modes: stats?.stats?.all?.modes || {},
-    timestamp: new Date().toISOString(),
-  };
+// Preprocess Fortnite Stats
+const preprocessFortniteStats = (stats) => ({
+  gameName: "Fortnite",
+  playerName: stats?.account?.name || "unknown",
+  platform: stats?.platform || "unknown",
+  overallStats: {
+    kills: stats?.stats?.all?.overall?.kills || 0,
+    matchesPlayed: stats?.stats?.all?.overall?.matches || 0,
+    wins: stats?.stats?.all?.overall?.wins || 0,
+    winRate: stats?.stats?.all?.overall?.winRate || 0,
+  },
+  modes: stats?.stats?.all?.modes || {},
+  timestamp: new Date().toISOString(),
+});
+
+// Generate Hash for Deduplication
+const hashData = (data) => crypto.createHash("sha256").update(JSON.stringify(data)).digest("hex");
+
+// Deduplicate Data
+const deduplicateData = (data) => {
+  const seenHashes = new Set();
+  return data.filter((item) => {
+    const itemHash = hashData(item);
+    if (seenHashes.has(itemHash)) {
+      return false; // Skip duplicate
+    }
+    seenHashes.add(itemHash);
+    return true;
+  });
 };
 
-// Fetch Fortnite Gameplay Data for Multiple Players
+// Fetch Gameplay Data for Multiple Players
 const fetchFortniteGameplayData = async (usernames) => {
   if (!API_KEY) {
     console.warn("Skipping gameplay data fetch due to missing API key.");
@@ -78,20 +91,16 @@ const fetchFortniteGameplayData = async (usernames) => {
 
   try {
     const gameplayData = [];
-
     for (const username of usernames) {
       console.log(`Fetching stats for: ${username}`);
       const playerStats = await getPlayerStats(username);
-
       if (playerStats) {
-        const processedStats = preprocessFortniteStats(playerStats);
-        gameplayData.push(processedStats);
+        gameplayData.push(preprocessFortniteStats(playerStats));
       } else {
         console.warn(`No stats found for ${username}.`);
       }
     }
-
-    return gameplayData;
+    return deduplicateData(gameplayData); // Deduplicate before returning
   } catch (error) {
     console.error("Error fetching Fortnite gameplay data:", error.message);
     return [];
@@ -108,12 +117,12 @@ export async function task(roundNumber) {
     console.log(`Fetched usernames: ${usernames}`);
 
     if (!usernames.length) {
-      console.warn("No usernames fetched from accountId. Skipping data fetch.");
+      console.warn("No usernames fetched. Skipping data fetch.");
       await namespaceWrapper.storeSet(`round_${roundNumber}_fortniteGameplay`, JSON.stringify([]));
       return;
     }
 
-    // Fetch and preprocess Fortnite gameplay data
+    // Fetch and preprocess gameplay data
     const gameplayData = await fetchFortniteGameplayData(usernames);
 
     if (gameplayData.length === 0) {
@@ -122,9 +131,22 @@ export async function task(roundNumber) {
       return;
     }
 
-    // Store the processed data
+    // Generate hash for entire dataset
+    const gameplayHash = hashData(gameplayData);
+    const existingHashes = JSON.parse(await namespaceWrapper.storeGet(`round_${roundNumber}_hashes`) || "[]");
+
+    // Check for duplicates
+    if (existingHashes.includes(gameplayHash)) {
+      console.warn("Duplicate gameplay data detected. Skipping storage.");
+      return;
+    }
+
+    // Store the data and update hash records
     const storageKey = `round_${roundNumber}_fortniteGameplay`;
     await namespaceWrapper.storeSet(storageKey, JSON.stringify(gameplayData));
+    existingHashes.push(gameplayHash);
+    await namespaceWrapper.storeSet(`round_${roundNumber}_hashes`, JSON.stringify(existingHashes));
+
     console.log("Fortnite gameplay data stored successfully:", gameplayData);
   } catch (error) {
     console.error("Error executing SMART task:", error.message);

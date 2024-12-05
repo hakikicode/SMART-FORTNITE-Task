@@ -1,38 +1,20 @@
-# SMART Fortnite Game Task
+SMART Fortnite Game Task - Summary
+The SMART Fortnite Game Task on the Koii Network enables users to validate Fortnite leaderboard data, earn SMART tokens, and contribute to a decentralized gaming ecosystem.
 
-### Overview
-The SMART Fortnite Game Task is a GameFi-focused mechanism on the Koii Network, enabling participants to validate Fortnite leaderboard data and earn rewards in **SMART tokens**. By running this task, users contribute to a transparent and fair gaming ecosystem while enjoying decentralized rewards.
-
-### Objectives
-- **Leaderboard Validation:** Verify Fortnite leaderboard data, including player scores and match activity.
-- **Reward Distribution:** Earn SMART tokens for accurate validations of gameplay data.
-- **Ecosystem Growth:** Enhance engagement in the decentralized GameFi ecosystem.
-
-### Task Details
-- **Task ID:** Available on Koii Node
-- **Platform:** Koii Network Node
-- **Requirements:** CPU: 4-core | RAM: 5 GB | Storage: 5 GB
-- **Reward Structure:** Based on validated Fortnite player scores.
-- **Submission Frequency:** Every 1500 slots (~10 minutes)
-
-### Steps for Running SMART Fortnite Game Task
-1. **Node Setup:** Set up your Koii Node with sufficient resources.
-2. **Add SMART Task:** Add the SMART Fortnite Game Task using its Task ID on the Koii Node interface.
-3. **Submit Data:** Fetch and validate Fortnite leaderboard data automatically via the task.
-4. **Earn Rewards:** Validations are rewarded with SMART tokens upon passing audit checks.
-
-### Rewards
-Participants validating Fortnite data are rewarded in SMART tokens. Player scores are the key metric for determining token distribution, ensuring fairness and genuine engagement.
-
-### Requirements
-- **Minimum Stake:** 1.9 SMART token for task participation.
-- **Koii Node:** Required to run and validate the task.
-
-### FAQs
-**How do I start running the SMART Fortnite Game Task?**  
-Add the task to your Koii Node, verify Fortnite leaderboard data, and ensure active participation.
-
-**What is PlayerScore?**  
-It’s the validated score of a Fortnite player, used as the primary metric for reward calculation.
-
-For more information, visit the [SMART Task repository](https://github.com/hakikicode/SMART-FORTNITE-Game-Task) or contact us via social media.
+Key Objectives
+Validate Leaderboard Data: Ensure the accuracy of player scores and match activities.
+Earn Rewards: Receive SMART tokens for successful validations.
+Support GameFi Growth: Promote transparency and engagement in the ecosystem.
+Task Highlights
+Task ID: Available on Koii Node.
+Platform: Koii Network.
+Requirements: CPU: 4-core | RAM: 5 GB | Storage: 5 GB.
+Reward Frequency: Every 1500 slots (~10 minutes).
+Steps to Participate
+Add the Task: Search the SMART Fortnite Game Task to start the task.
+Submit Data: Validate and submit Fortnite leaderboard data.
+Earn Tokens: Receive SMART tokens after audit checks.
+Requirements
+Minimum Stake: 1.9 SMART tokens.
+PlayerScore: Key metric for reward distribution.
+For details, visit the SMART Task repository.
